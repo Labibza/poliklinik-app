@@ -27,7 +27,28 @@
                             <p>Dashboard Admin</p>
                         </a>
                     </li>
+                    
                 @endif
+
+                <!-- Role Poli -->
+                @if (request()->is('admin*'))
+                    <li class="nav-item">
+                        <a href="{{ route('polis.index') }}" class="nav-link {{ request()->routeIs('polis.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-hospital"></i>
+                            <p>Manajemen Poli</p>
+                        </a>
+                    </li>
+                @endif
+
+                <!-- Role Dokter Admin-->
+                 @if (request()->is('admin*'))
+                    <li class="nav-item">
+                        <a href="{{ route('dokters.index') }}" class="nav-link {{ request()->routeIs('dokters.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user-md"></i>
+                            <p>Manajemen Dokter</p>
+                        </a>
+                    </li>
+                @endif                
 
                 <!-- role pasien -->
                 @if (request()->is('pasien*'))
@@ -37,6 +58,7 @@
                             <p>Dashboard Pasien</p>
                         </a>
                     </li>
+
                 @endif
 
                 <!-- role dokter -->
@@ -52,7 +74,7 @@
                 <li class="nav-item">
                     <form method="POST" action="/logout">
                         @csrf
-                        <button type="submit" class="navv-link btn btn-danger text-left w-100">
+                        <button type="submit" class="nav-link btn btn-danger text-left w-100">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>Keluar</p>
                         </button>
