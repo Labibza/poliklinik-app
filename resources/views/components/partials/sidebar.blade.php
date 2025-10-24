@@ -48,7 +48,27 @@
                             <p>Manajemen Dokter</p>
                         </a>
                     </li>
-                @endif                
+                @endif    
+                
+                <!-- Role Pasien Admin-->
+                 @if (request()->is('admin*'))
+                    <li class="nav-item">
+                        <a href="{{ route('pasien.index') }}" class="nav-link {{ request()->routeIs('pasien.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user-md"></i>
+                            <p>Manajemen Pasien</p>
+                        </a>
+                    </li>
+                @endif
+
+                <!-- Role Obat Admin-->
+                 @if (request()->is('admin*'))
+                    <li class="nav-item">
+                        <a href="{{ route('obat.index') }}" class="nav-link {{ request()->routeIs('obat.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-pills"></i>
+                            <p>Manajemen Obat</p>
+                        </a>
+                    </li>
+                @endif
 
                 <!-- role pasien -->
                 @if (request()->is('pasien*'))
