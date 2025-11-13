@@ -89,6 +89,12 @@
                             <p>Dashboard Dokter</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('jadwal-periksa.index') }}"  class="nav-link {{ request()->routeIs('dokter.jadwal-periksa.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-calendar-check"></i>
+                            <p>Jadwal Periksa</p>
+                        </a>
+                    </li>
                 @endif
 
                 <li class="nav-item">
