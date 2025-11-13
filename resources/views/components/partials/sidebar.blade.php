@@ -73,13 +73,26 @@
                 <!-- role pasien -->
                 @if (request()->is('pasien*'))
                     <li class="nav-item">
-                        <a href="{{ route('pasien.dashboard') }}"  class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-columns"></i>
-                            <p>Dashboard Pasien</p>
+                            <p>
+                                Dashboard Pasien
+                            </p>
                         </a>
                     </li>
-
                 @endif
+                
+                @auth
+                    @if (auth()->user()->role === 'pasien')
+                        <li class="nav-item">
+                            <a href="{{ route('pasien.daftar') }}"
+                            class="nav-link {{ request()->routeIs('pasien.daftar') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>Poli</p>
+                            </a>
+                        </li>
+                    @endif
+                @endauth
 
                 <!-- role dokter -->
                 @if (request()->is('dokter*'))
