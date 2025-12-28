@@ -9,10 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('id_poli')->nullable()->constrained('poli')->nullOnDelete();
+            if (!Schema::hasColumn('users', 'id_poli')) {
+                $table->unsignedBigInteger('id_poli')->nullable()->after('id');
+            }
         });
     }
 

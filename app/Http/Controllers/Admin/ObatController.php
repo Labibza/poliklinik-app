@@ -68,6 +68,7 @@ class ObatController extends Controller
             'nama_obat' => 'required|string',
             'kemasan' => 'nullable|string',
             'harga' => 'required|integer',
+            'stok' => 'required|integer|min:0',
         ]);
 
         $obat = Obat::findOrFail($id);
@@ -75,6 +76,7 @@ class ObatController extends Controller
             'nama_obat' => $request->nama_obat,
             'kemasan' => $request->kemasan,
             'harga' => $request->harga,
+            'stok' => $request->stok,
         ]);
 
         return redirect()->route('obat.index')
@@ -94,4 +96,5 @@ class ObatController extends Controller
             ->with('message', 'Data Obat Berhasil dihapus')
             ->with('type', 'success');
     }
+
 }

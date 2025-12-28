@@ -7,6 +7,8 @@
                     <div class="card-body">
                         <form action="{{ route('obat.update', $obat->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -36,6 +38,16 @@
                                 @error('harga')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Stok Obat</label>
+                                <input type="number"
+                                    name="stok"
+                                    class="form-control"
+                                    value="{{ old('stok', $obat->stok) }}"
+                                    min="0"
+                                    required>
                             </div>
 
                             <div class="form-group mb-3">

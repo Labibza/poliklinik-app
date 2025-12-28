@@ -22,7 +22,9 @@
                             <tr>
                                 <th>Nama Obat</th>
                                 <th>Kemasan</th>
-                                <th>Harga</th>                              
+                                <th>Harga</th>
+                                <th>Stok</th>  
+                                <th>Status</th>                          
                                 <th style="width: 150px;">Aksi</th>
                             </tr>
                         </thead>
@@ -32,10 +34,23 @@
                                     <td>{{ $obat->nama_obat }}</td>
                                     <td>{{ $obat->kemasan }}</td>
                                     <td>{{ 'Rp' . number_format ($obat->harga, 0, ',', '.') }}</td>
+                                    <td>{{ $obat->stok }}</td>
+                                    <td>
+                                        @if ($obat->stok == 0)
+                                            <span class="badge bg-danger">Habis</span>
+                                        @elseif ($obat->stok <= 5)
+                                            <span class="badge bg-warning text-dark">Menipis</span>
+                                        @else
+                                            <span class="badge bg-success">Aman</span>
+                                        @endif
+                                    </td>
+
                                     <td>
                                         <a href="{{ route('obat.edit', $obat->id) }}" class="btn btn-sm btn-warning">
                                             <i class="fas fa-edit"></i>Edit
                                         </a>
+
+                                        <br>
                                         <form action="{{ route('obat.destroy', $obat->id) }}" method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
@@ -43,6 +58,7 @@
                                                 <i class="fas fa-trash"></i> Hapus
                                             </button>
                                         </form>
+
                                     </td>
                                 </tr>
                             @empty
