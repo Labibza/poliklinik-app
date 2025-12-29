@@ -96,32 +96,39 @@
 
                 <!-- role dokter -->
                 @if (request()->is('dokter*'))
-                    <li class="nav-item">
-                        <a href="{{ route('dokter.dashboard') }}"  class="nav-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
+                        <li class="nav-item">
+                        <a href="{{ route('dokter.dashboard') }}"
+                        class="nav-link {{ request()->routeIs('dokter.dashboard') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-columns"></i>
                             <p>Dashboard Dokter</p>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a href="{{ route('jadwal-periksa.index') }}"  class="nav-link {{ request()->routeIs('dokter.jadwal-periksa.index') ? 'active' : '' }}">
+                        <a href="{{ route('jadwal-periksa.index') }}"
+                        class="nav-link {{ request()->routeIs('jadwal-periksa.*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-calendar-check"></i>
                             <p>Jadwal Periksa</p>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a href="{{ route('periksa-pasien.index') }}" class="nav-link {{ request()->routeIs('dokter.periksa-pasien.*') ? 'active' : '' }}">
+                        <a href="{{ route('periksa-pasien.index') }}"
+                        class="nav-link {{ request()->routeIs('periksa-pasien.*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-stethoscope"></i>
                             <p>Periksa Pasien</p>
                         </a>
                     </li>
-                     <li class="nav-item">
-                        <a href="{{ route('riwayat-pasien.index') }}" class="nav-link {{ request()->routeIs('dokter.riwayat-pasien*') ? 'active' : '' }}">
+
+                    <li class="nav-item">
+                        <a href="{{ route('riwayat-pasien.index') }}"
+                        class="nav-link {{ request()->routeIs('riwayat-pasien.*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-notes-medical"></i>
                             <p>Riwayat Pasien</p>
                         </a>
                     </li>
-
                 @endif
+
 
                 <li class="nav-item">
                     <form method="POST" action="/logout">
